@@ -4,10 +4,8 @@
 * rc2 : Utilise une bibliothèque de fonctions pour traiter à la fois la connexion
 *	et la création de la requête d'insertion
 **/
-session_start(); // Démarrer la session
-
-include("libs/db.inc.php"); // Charger le fichier libs/db.inc.php
-include("libs/utilisateurs.inc.php"); // Services spécifiques à la gestion de la table utilisateurs
+include("../libs/db.inc.php"); // Charger le fichier libs/db.inc.php
+include("../libs/utilisateurs.inc.php"); // Services spécifiques à la gestion de la table utilisateurs
 
 if(sizeof($_POST)) { // On ne peut pas exécuter l'insertion si aucune donnée n'est postée
 	// Avant d'exécuter la requête de création, on doit vérifier qu'il n'y a pas déjà une ligne dans la table avec cet identifiant
@@ -16,14 +14,6 @@ if(sizeof($_POST)) { // On ne peut pas exécuter l'insertion si aucune donnée n
 		$resultat = createAndExec("signin","utilisateurs");
 	} else {
 		// Soit la connexion à la base n'est pas valide, soit il existe déjà un utilisateur avec cet identifiant
-		
-		// Enregistrer les données saisies dans une variable de session
-		$_SESSION["inscription"]["civilite"] = $_POST["civilite"];
-		$_SESSION["inscription"]["nom"] = $_POST["nom"];
-		$_SESSION["inscription"]["prenom"] = $_POST["prenom"];
-		$_SESSION["inscription"]["email"] = $_POST["email"];
-		$_SESSION["inscription"]["password"] = $_POST["password"];
-		
 		header("Location:inscription.php"); // Redirige vers le formulaire d'inscription
 	}
 } else {

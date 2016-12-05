@@ -4,18 +4,12 @@
 * rc2 : Utilise une bibliothèque de fonctions pour traiter à la fois la connexion
 *	et la création de la requête d'insertion
 **/
-include("libs/db.inc.php"); // Charger le fichier libs/db.inc.php
-include("libs/utilisateurs.inc.php"); // Services spécifiques à la gestion de la table utilisateurs
+include("../libs/db.inc.php"); // Charger le fichier libs/db.inc.php
 
 if(sizeof($_POST)) { // On ne peut pas exécuter l'insertion si aucune donnée n'est postée
 	// Avant d'exécuter la requête de création, on doit vérifier qu'il n'y a pas déjà une ligne dans la table avec cet identifiant
-	$creationAutorisee = verifierLogin($_POST["identifiant"]);
-	if($creationAutorisee === true){
-		$resultat = createAndExec("signin","utilisateurs");
-	} else {
-		// Soit la connexion à la base n'est pas valide, soit il existe déjà un utilisateur avec cet identifiant
-		header("Location:inscription.php"); // Redirige vers le formulaire d'inscription
-	}
+	
+	$resultat = createAndExec("signin","utilisateurs");
 } else {
 		// L'utilisateur a essayé de charger le script sans venir du formulaire, on le renvoie au login
 		header("Location: login.php");

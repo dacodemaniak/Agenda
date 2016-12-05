@@ -8,8 +8,8 @@
 /**
 *	Inclusion des librairies nécessaires pour l'affichage des données
 **/
-include("libs/db.inc.php");
-include("libs/tableIndex.inc.php");
+include("../libs/db.inc.php");
+include("../libs/tableIndex.inc.php");
 
 /**
 * Appeler la méga fonction : afficheIndex()

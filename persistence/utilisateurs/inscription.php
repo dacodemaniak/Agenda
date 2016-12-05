@@ -4,8 +4,8 @@
 **/
 session_start();
 
-include("libs/db.inc.php");
-include("libs/civilites.inc.php");
+include("../libs/db.inc.php");
+include("../libs/civilites.inc.php");
 
 #begin_debug : tester les fonctions
 $options = lister("options"); // Test d'appel à la fonction lister de civilites.inc.php
