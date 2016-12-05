@@ -1,0 +1,183 @@
+<?php
+/**
+* @name formulaire.php : Permet la gestion d'un formulaire simple
+**/
+
+/**
+* array sujets : Stocke les sujets qui seront affichés dans le select du formulaire
+**/
+$sujets = array(
+	"Demande de devis",
+	"Demande de SAV",
+	"Contact Technique"
+);
+
+$destinataires = array(
+	"contact@societe.com",
+	"administratif@societe.com",
+	"commercial@societe.com"
+);
+
+/**
+* string toSelectOptions(array $datas)
+*	@param array $datas : Tableau contenant les données à afficher dans le formulaire
+*	@return string Chaîne formatée <option>...</option>
+**/
+function toSelectOptions($datas){
+	if($datas[0] != "Choisir..."){
+		$options = "<option value=\"\">Choisir...</option>\n";
+	}
+	
+	for($i=0; $i < sizeof($datas); $i++){
+		$value = $i + 1;
+		$options .= "<option value=\"" . $value . "\">" . $datas[$i] . "</option>\n";
+		// $options = $options . "<option value=\"" . $i . "\">" . $datas[$i] . "</option>\n";
+	}
+	// En fin de boucle sur les données du tableau $datas
+	return $options;
+}
+?>
+
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Formulaire de contact</title>
+
+		<style>
+			label.error{
+				color: rgba(168, 168, 168, 0.9);
+			}
+			
+			#errors{
+				background-color: rgba(125, 125, 125, 0.9);
+				border: solid 1px rgb(128, 128, 128, 0);
+				border-radius: 3px;
+				box-shadow: 10px 10px 10px #000 3px;
+				height: auto;
+				width: 300px;
+				display: none; /* Ne pas afficher tant qu'il n'y a pas d'erreurs */
+			}
+			
+			.form-group{
+				position: relative;
+			}
+		</style>
+		
+		<link href="css/animate/animate.css" rel="stylesheet" />
+		
+		<!-- Intégration de la librairie jQuery (Content Delivery Network) dans le document HTML //-->
+		<script src="javascript/jquery/3.1.1/jquery.min.js"></script>
+		
+
+	</head>
+	
+	<body>
+		<form id="contact" method="post" action="">
+			<fieldset>
+				<legend>Contactez-nous</legend>
+				
+				<div class="form-group" id="group-sujet">
+					<label>Sujet (*) :</label>
+					<select name="sujets" size="1" id="sujets" class="required" data-label="Sujet">
+						<!--  A terme, prévoir l'alimentation automatique du select à partir de données dynamiques -->
+						<?php
+							echo toSelectOptions($sujets); // Utiliser une fonction pour afficher la liste des options
+						?>
+					</select>
+					<div class="erreur" id="error-sujet"></div>
+				</div>
+				
+				<div class="form-group">
+					<label>Votre nom(*) :</label>
+					<input type="text" id="nom" name="nom" value="" placeholder="Nom" size="30" maxlength="255" class="required"  data-label="Nom" />
+					<div class="erreur" id="error-nom"></div>
+				</div>
+				
+				<div class="form-group">
+					<label>Votre email(*) :</label>
+					<input type="email" id="email" name="email" value="" placeholder="Adresse e-mail" size="30" maxlength="150" class="required"  data-label="Adresse de courrier électronique"/>
+					<div class="erreur" id="error-email"></div>
+				</div>
+				
+				<div class="form-group">
+					<label>Précisez votre demande :</label>
+					<textarea name="objet" id="objet" cols="30" rows="5" value="" placeholder="Votre demande" class="required"  data-label="Objet de votre message"></textarea>
+				</div>
+				
+				<div class="erreur" id="errors"></div>
+				
+				<div class="button-group">
+					<button type="submit" name="valider">Valider</button>
+				</div>
+			</fieldset>
+		</form>
+		
+		<!-- Intégration des scripts de contrôle de formulaire //-->
+		<script>
+			// En passant par la gestion des événements jquery
+			$("#contact").on("submit", function(evt){ // A la survenue de l'évément "submit" sur l'élément dont l'ID est contact, on traite plusieurs opérations
+				var messages = new String; // Stocke les messages d'erreur
+				var formulaireValide = true;
+				var errorFields = new Array;
+				
+				// En jQuery on peut récupérer une collection d'éléments simplement par un nom de classe
+				$(".required").each(function(){ // boucle sur tous les éléments du document qui portent la classe .required, en exécutant une fonction à chaque fois
+					console.log("Contrôle du champ : " + $(this).attr("id"));
+					if($(this).val() == ""){
+						messages += "Le champ " + $(this).attr("data-label") + " n'est pas rempli.<br />";
+						// Ajoute l'élément concerné au tableau des éléments à animer
+						//$(this).parent(".form-group").addClass("shake");
+						var groupField = $(this).parent(".form-group");
+						errorFields.push(groupField);
+						formulaireValide = false;
+					}
+				});
+
+				
+				
+				// En fin de boucle each, on a contrôlé tous les champs qui disposent de la classe .required
+				if(!formulaireValide){
+					// Si le formulaire n'est pas valide, on affiche les erreurs dans la DIV concernées
+					$("#errors").html(messages);
+					$("#errors").slideDown("fast");
+
+					// Exécute l'animation
+					for(var j=0; j < errorFields.length; j++){
+						var repetition = 10;
+						var duree = 100;
+						var group = errorFields[j];
+						var direction = new String;
+						
+						for(var i=0; i < repetition; i++){
+							// Exécute l'animation à partir de la méthode animate()
+							if(i % 2 === 0){
+								direction = "-=10";
+							} else {
+								direction = "+=10";
+							}
+							$(group).animate(
+								{
+									left: direction
+								},
+								duree,
+								function(){
+									// Quoi faire après l'animation
+								}
+							);
+						}
+					};
+
+				}
+
+				if(!formulaireValide){
+					// Le formulaire n'étant pas valide, on empêche la soumission
+					evt.preventDefault();
+				}
+				
+				return formulaireValide;
+			});
+			
+		</script>
+	</body>
+</html>

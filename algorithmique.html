@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Algorithmes - Version Javascript</title>
+		
+		<style>
+			.pair {
+				background-color: #e6e6e6;
+			}
+			
+			.impair{
+				background-color: #6e6e6e;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<script>
+			/**
+			* Algorithme de la table de multiplication
+			**/
+			var chiffreDepart = new Number(5); // Affecte la valeur 5 à la variable chiffreDepart (implicitement numérique)
+			var resultat = new Number(); // Stocke le résultat de l'opération à réaliser, l'opérateur new Number() crée un objet qui ne peut accepter que des valeurs numériques
+			
+			
+			// Début de la boucle Pour
+			for(var indice = 1; indice <= 10; indice++){
+				// Début de traitement
+				resultat = chiffreDepart * indice;
+				//document.writeln(resultat); // Ecrire le résultat dans le document HTML
+				console.log("Résultat : " + resultat);
+				document.writeln("Resultat de " + chiffreDepart + " * " + indice + " = " + resultat + "<br />"); // Ecrire le résultat dans le document HTML
+				// Fin de traitement
+			}
+			
+			/**
+			* N'afficher que les résultats pairs
+			**/
+			for(var indice = 1; indice <= 10; indice++){
+				resultat = chiffreDepart * indice;
+				
+				if(resultat % 2 == 0){ // L'opérateur % retourne le reste de la division concernée
+					document.writeln("Résultat : " + resultat + "<br />");
+				}
+			}
+			
+			var chiffreDepart = 8;
+			var resultat = 0;
+			var cssClass = ""; // Chaîne vide pour l'instant
+
+			for(var indice = 0; indice <= 10; indice++){
+				resultat = chiffreDepart * indice;
+				
+				if(resultat % 2 == 0){
+					cssClass = "pair";
+				} else {
+					cssClass = "impair";
+				}
+				
+				document.writeln("<p class=\"" + cssClass + "\"> Résultat : " + resultat + "</p>");
+				//document.writeln('<p class="' + cssClass + '"> Aujourd\'hui le résultat est : ' + resultat + '</p>');
+			}
+			
+			// Résultat des élections : version 1 - Pour un seul candidat
+			var voteC1 = new Number(60); // new c'est l'opérateur de construction d'un objet.
+			var voteC2 = new Number(30);
+			var voteC3 = new Number(20);
+			var voteC4 = new Number(90);
+			
+			var totalVote = new Number();
+			var ratioC1 = new Number();
+			
+			totalVote = voteC1 + voteC2 + voteC3 + voteC4; // Calcule la somme des votes recceuillis
+			
+			if(totalVote > 200){
+				document.writeln("Fraude avérée : le nombre total de vote " + totalVote + " est supérieur à 200 !");
+			} else {
+				// Calculer le ratio pour le candidat à traiter (C1)
+				ratioC1 = (voteC1 / totalVote) * 100;
+				
+				// Détermine le statut du candidat
+				if(ratioC1 > 50){
+					document.writeln("Le candidat n° a été élu au premier tour.");
+				} else {
+					if(ratioC1 <= 50 && ratioC1 > 12.5){
+						document.writeln("Le candidat n° 1 passe au second tour.");
+					} else {
+						// Le candidat a forcément moins de 12,5% de votes, il est éliminé.
+						document.writeln("Le candidat n° 1 est éliminé au premier tour.");
+					}
+				}
+			}
+			
+		
+			// Parcours un tableau en javascript
+			var participants = ["Aubert", "Martin", "Paul", "Justine"]; // 4 éléments dans le tableau, premier indice du tableau => 0
+			for(var indice = 0; indice < participants.length; indice++){ // participants.length donne la taille du tableau (4 éléments)
+				document.writeln("Participant : " + participants[indice] + "<br />");
+			}
+			
+			// Les phrases idiotes
+			var sujets = ["Je", "Tu", "Ils", "Vous"];
+			var verbes = ["Mange", "Dors", "Cours", "Travaille"];
+			var complements = ["Des oiseaux", "Comme une souche", "Après le temps", "Tout le temps"];
+			
+			// Attend les saisies utilisateur
+			var sujet = -1;
+			while(sujet < 0 || sujet > 3){
+				var sujet = prompt("Indice du sujet (entre 0 et 3)");
+			}
+			var verbe = prompt("Indice du verbe (entre 0 et 3)");
+			var complement = prompt("Indice du complement (entre 0 et 3)");
+			
+			// Une fois que les 3 indices sont récupérés, afficher la phrase idiote :
+			document.writeln(sujets[sujet] + " " + verbes[verbe] + " " + complements[complement] + "<br />");
+		</script>
+
+	</body>
+</html>
