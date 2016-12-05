@@ -3,7 +3,7 @@
 * @name update_civilite.php Formulaire de mise à jour d'une civilité
 (Vue)
 **/
-include("libs/db.inc.php");
+include("../libs/db.inc.php");
 
 //1. On récupère les données correspondant à l'ID passé en paramètre dans la table civilites
 if(isset($_GET["id"])){
