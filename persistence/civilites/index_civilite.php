@@ -7,9 +7,9 @@
 session_start();
 
 // Inclure les librairies utiles
-include("libs/db.inc.php");
-include("libs/utilisateurs.inc.php");
-include("libs/civilites.inc.php");
+include("../libs/db.inc.php");
+include("../libs/utilisateurs.inc.php");
+include("../libs/civilites.inc.php");
 
 // Vérification des droits des utilisateurs
 if(!isset($_SESSION["utilisateur"])){

@@ -3,7 +3,7 @@
 * @name controller_civilite.php Traite la mise à jour de la base de données
 *	et retourne à index_civilite.php
 **/
-include("libs/db.inc.php");
+include("../libs/db.inc.php");
 
 // Vérifier que des données ont été postées
 if(sizeof($_POST)) {
