@@ -10,6 +10,12 @@ abstract class champHTML {
 	public $name;
 	
 	/**
+	 * Définit la vue à charger pour restituer le champ
+	 * @var string
+	 */
+	protected $template;
+	
+	/**
 	* array $cssClasses : tableau contenant les classes CSS à utiliser pour la représentation du champ
 	**/
 	protected $cssClasses;
@@ -44,15 +50,21 @@ abstract class champHTML {
 		} else {
 			$this->cssClasses[] = $cssClass;
 		}
+		return $this; // La méthode va retourner l'instance de l'objet concerné
 	}
 	
 	public function getCssClasses(){
 		$retour = ""; // Chaîne qui sera retournée en sortie de méthode
 		
 		if(sizeof($this->cssClasses) > 0){
-			$retour = "class=\"" . implode(" ", $this->cssClasses) . "\"";
+			$retour = implode(" ", $this->cssClasses);
 		}
 		
 		return $retour;
+	}
+	
+	public function render(){
+		$field = $this;
+		include($this->template);
 	}
 }
