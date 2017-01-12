@@ -4,11 +4,8 @@
  **/
 $id = $_POST["id"];
 
-// On devrait procéder au traitement lui-même...
-if(file_exists("../modele/evenements.class.php"))
-	require_once("../../../Classes/App/modele/evenements.class.php");
-else 
-	require_once("../../modele/evenements.class.php");
+require_once(dirname(__FILE__) . "/../../../appLoader.class.php");
+$appLoader = new appLoader();
 
 $evenement = new evenements();
 $evenement->delete($id);
