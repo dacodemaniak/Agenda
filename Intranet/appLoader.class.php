@@ -61,6 +61,12 @@ class appLoader {
 		return false;
 	}
 	
+	/**
+	 * Méthode récursive parcourant les dossiers pour trouver la classe à charger
+	 * @param string $dossier Dossier à partir duquel je parcours l'application
+	 * @param string $className Nom de la classe à chercher
+	 * @return string|boolean|string|boolean : Nom complet et chemin de la classe à charger, faux sinon
+	 */
 	private static function chercherClasse($dossier, $className){
 		
 		#begin_debug
