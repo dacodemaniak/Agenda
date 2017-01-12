@@ -20,6 +20,7 @@ class appLoader {
 	**/
 	public function __construct(){
 		spl_autoload_register(array(__CLASS__,"autoload"));
+		
 	}
 	
 	/**

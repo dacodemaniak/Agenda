@@ -8,7 +8,7 @@
 
 // Charger les classes nécessaires pour la création d'un objet du modèle evenements
 if(file_exists("../modele/evenements.class.php"))
-	require_once("../../../Classes/App/modele/evenements.class.php");
+	require_once("../modele/evenements.class.php");
 	else
 		require_once("../../modele/evenements.class.php");
 

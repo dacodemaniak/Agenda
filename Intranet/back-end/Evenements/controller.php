@@ -30,6 +30,8 @@ $appLoader = new appLoader();
  **/
 $evenements = new evenements();
 
+echo "Attribut privé de Evénements : " . $evenements->prive . "<br />\n";
+
 // On veut sélectionner toutes les données de la table
 #$evenements->select();
 #begin_debug
