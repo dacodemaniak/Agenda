@@ -98,7 +98,7 @@ class evenements extends Modele{
 		#end_debug
 
 		// Instancie un objet de connexion à la base de données
-		$connexion = new Connect();
+		$connexion = new dbConnect();
 		$base = $connexion->getBase(); // $base est un objet de type PDO
 
 		if(!is_null($base)){
