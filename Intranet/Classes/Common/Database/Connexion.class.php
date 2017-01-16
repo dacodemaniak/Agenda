@@ -5,7 +5,6 @@
  * @package /Objet/Initiation/Classes/Database
  * @version 1.0
 **/
-namespace annec\Database;
 
 abstract class Connexion {
 	/**
