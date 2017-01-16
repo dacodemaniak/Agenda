@@ -12,8 +12,6 @@
 * @see Intranet/Modele/civilite.class.php
 **/
 
-use \thalia\Db\dbConnect as Connect;
-
 class evenements extends Modele{
 	/**
 	 * Tableau de stockage des colonnes de la table Evenements
