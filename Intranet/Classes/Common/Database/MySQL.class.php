@@ -1,4 +1,6 @@
 <?php
+use annec\Database\Connexion;
+
 /**
  * @name MySQL.class.php Définition d'une connexion à une base de données mySQL
  * @author webdev 2016 - 2017

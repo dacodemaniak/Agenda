@@ -5,6 +5,7 @@
  * @package /Objet/Initiation/Classes/Database
  * @version 1.0
 **/
+
 abstract class Connexion {
 	/**
 	* @var string $host : Adresse du serveur de base de données

@@ -24,7 +24,7 @@ class evenements extends Modele{
 	 * @var array $postedDatas
 	 **/
 	private $postedDatas;
-
+	
 	/**
 	 * Stocke l'ensemble des événements à traiter
 	 * @var array $evenements;
@@ -49,13 +49,41 @@ class evenements extends Modele{
 				"image",
 				"programme"
 		);
-
+		
 		$this->primaryKeyName = "evenement_id";
 		$this->tableName = "evenements";
 
 		$this->evenements = array();
 	}
-
+	
+	/**
+	 * Méthode magique appelée par PHP à chaque fois qu'on veut accéder à une donnée de la classe courante
+	 * @param string $nomAttribut : Nom de l'attribut de la classe à retourner
+	 */
+	public function __get($nomAttribut){
+		if(in_array($nomAttribut, $this->colonnes)){
+			return sizeof($this->evenements) ? $this->evenements[$nomAttribut] : "";
+		}
+		
+		return false;
+		
+		if(!property_exists($this,$nomAttribut)){ // la valeur de $nomAttribut ne correspond pas à un attribut de la classe courante
+			#echo "L'attribut : " . $nomAttribut . " n'existe pas dans la classe courante evenements<br />\n";
+			// Est-ce que par hasard, l'attribut ne serait pas une clé du tableau $this->evenements
+			#echo "Le tableau evenements contient : " . sizeof($this->evenements) . "<br />\n";
+			if(sizeof($this->evenements)){
+				if(in_array($nomAttribut, $this->colonnes)){
+					// J'ai une ligne dans l'attribut $this->evenements, je suis donc passé par $this->selectById()
+					if(array_key_exists($nomAttribut, $this->evenements)){
+						// Et en plus, $nomAttribut correspond à une clé de ce tableau...
+						return $this->evenements[$nomAttribut];
+					}
+				}
+			}
+		}
+		return "Attribut non accessible directement !";
+	}
+	
 	/**
 	 * Crée et exécute un SELECT sur la table evenements pour l'ensemble des données
 	 **/

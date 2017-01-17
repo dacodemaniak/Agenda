@@ -9,9 +9,8 @@
 *		- vue/dashboard.php : Tous les événements dans un tableau pour "administration"
 **/
 
-require("Classes/DefinitionEvenement.class.php");
-require("Classes/EvenementPublic.class.php");
-require("Classes/EvenementPrive.class.php");
+require_once(dirname(__FILE__) . "/../../appLoader.class.php");
+$appLoader = new appLoader();
 
 /**
 * Cette classe va permettre de "collectionner" les événements
@@ -20,8 +19,6 @@ require("Classes/EvenementPrive.class.php");
 *	- Les événements "publics" seulement dans l'ordre chronologique
 *	- Tous les événements mais dans l'ordre alphabétique
 **/
-require("Classes/agenda.class.php");
-
 $agenda = new agenda();
 
 /**
@@ -47,5 +44,5 @@ $agenda = new agenda();
 * Charger la vue correspondante
 **/
 
-include();
+include("");
 

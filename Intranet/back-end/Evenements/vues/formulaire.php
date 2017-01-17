@@ -44,17 +44,17 @@
 						<legend>Titre et description</legend>
 						<div class="form-group">
 							<label for="titre">Titre :</label>
-							<input type="text" class="form-control" name="titre" id="titre" value="<?php echo $evenements->evenements["titre"]; ?>" />
+							<input type="text" class="form-control" name="titre" id="titre" value="<?php echo $evenements->titre; ?>" />
 						</div>
 						<div class="form-group">
 							<label for="description">Description :</label>
-							<textarea class="form-control" name="description" id="description" cols="30" rows="5"><?php echo $evenements->evenements["titre"]; ?></textarea>
+							<textarea class="form-control" name="description" id="description" cols="30" rows="5"><?php echo $evenements->description; ?></textarea>
 						</div>
 						<div class="form-group">
 							<?php if($evenements->evenements["image"] != "") { ?>
-								<img src="<?php echo $evenements->evenements["image"]; ?>" title="Illustration" id="image_<?php echo $evenements->evenements["clePrimaire"]; ?>" />
-								<a href="#" class="btn btn-default imageDelete" title="Supprimer l'image" data-id="<?php echo $evenements->evenements["clePrimaire"]; ?>">Supprimer</a>
-								<div id="image-file-<?php echo $evenements->evenements["clePrimaire"]; ?>"></div>
+								<img src="<?php echo $evenements->evenements["image"]; ?>" title="Illustration" id="image_<?php echo $evenementsclePrimaire; ?>" />
+								<a href="#" class="btn btn-default imageDelete" title="Supprimer l'image" data-id="<?php echo $evenements->clePrimaire; ?>">Supprimer</a>
+								<div id="image-file-<?php echo $evenements->clePrimaire; ?>"></div>
 							<?php } else { ?>
 								<label for="image">Illustration :</label>
 								<input type="file" class="form-control" name="image" id="image" accept=".jpg,.jpeg,.png,.gif, image/*" />
@@ -62,26 +62,26 @@
 						</div>
 						<div class="form-group">
 							<label for="programme">Programme :</label>
-							<input type="text" class="form-control" name="programme" id="programme" value="<?php echo $evenements->evenements["programme"]; ?>" />
+							<input type="text" class="form-control" name="programme" id="programme" value="<?php echo $evenements->programme; ?>" />
 						</div>
 					</fieldset>
 					<fieldset>
 						<legend>Dates et heures</legend>
 						<div class="form-group">
 							<label for="date_debut">Date de début :</label>
-							<input type="text" class="form-control" name="date_debut" id="date_debut" value="<?php echo $evenements->evenements["date_debut"]; ?>" />
+							<input type="text" class="form-control" name="date_debut" id="date_debut" value="<?php echo $evenements->date_debut; ?>" />
 						</div>
 						<div class="form-group">
 							<label for="date_fin">Date de fin :</label>
-							<input type="text" class="form-control" name="date_fin" id="date_fin" value="<?php echo $evenements->evenements["date_fin"]; ?>" />
+							<input type="text" class="form-control" name="date_fin" id="date_fin" value="<?php echo $evenements->date_fin; ?>" />
 						</div>
 						<div class="form-group">
 							<label for="heure_debut">Heure de début :</label>
-							<input type="text" class="form-control" name="heure_debut" id="heure_debut" value="<?php echo $evenements->evenements["heure_debut"]; ?>" />
+							<input type="text" class="form-control" name="heure_debut" id="heure_debut" value="<?php echo $evenements->heure_debut; ?>" />
 						</div>
 						<div class="form-group">
 							<label for="heure_fin">Heure de fin :</label>
-							<input type="text" class="form-control" name="heure_fin" id="heure_fin" value="<?php echo $evenements->evenements["heure_fin"]; ?>" />
+							<input type="text" class="form-control" name="heure_fin" id="heure_fin" value="<?php echo $evenements->heure_fin; ?>" />
 						</div>							
 					</fieldset>
 					
@@ -103,29 +103,29 @@
 							<div class="col-lg-6 current">
 								<div class="form-group">
 									<label for="lieu">Lieu :</label>
-									<input type="text" class="form-control" name="lieu" id="lieu" value="<?php echo $evenements->evenements["lieu"]; ?>" />
+									<input type="text" class="form-control" name="lieu" id="lieu" value="<?php echo $evenements->lieu; ?>" />
 								</div>
 								<div class="form-group">
 									<label for="places_disponibles">Places disponibles :</label>
-									<input type="text" class="form-control" name="places_disponibles" id="places_disponibles" value="<?php echo $evenements->evenements["places_disponibles"]; ?>" />
+									<input type="text" class="form-control" name="places_disponibles" id="places_disponibles" value="<?php echo $evenements->places_disponibles; ?>" />
 								</div>
 							</div>
 							
 							<div class="col-lg-6">
 								<div class="form-group">
 									<label for="commission">Commission :</label>
-									<input type="text" class="form-control" name="commission" id="commission" value="<?php echo $evenements->evenements["commission"]; ?>" />
+									<input type="text" class="form-control" name="commission" id="commission" value="<?php echo $evenements->commission; ?>" />
 								</div>
 								<div class="form-group">
 									<label for="ordre_du_jour">Ordre du jour :</label>
-									<input type="text" class="form-control" name="ordre_du_jour" id="ordre_du_jour" value="<?php echo $evenements->evenements["ordre_du_jour"]; ?>" />
+									<input type="text" class="form-control" name="ordre_du_jour" id="ordre_du_jour" value="<?php echo $evenements->ordre_du_jour; ?>" />
 								</div>
 							</div>
 						</div>
 					</fieldset>
 					<div class="form-group">
 						<button type="submit" class="btn btn-primary"><?php echo $buttonLabel; ?></button>
-						<input type="hidden" name="clePrimaire" value="<?php echo $evenements->evenements["clePrimaire"]; ?>" />
+						<input type="hidden" name="clePrimaire" value="<?php echo $evenements->clePrimaire; ?>" />
 					</div>
 				</form>
 			</main>

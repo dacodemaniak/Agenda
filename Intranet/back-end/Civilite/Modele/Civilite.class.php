@@ -12,9 +12,6 @@
 *		(ORM : Object Relational Mapper)
 **/
 
-require_once("../Classes/Database/dbConnect.class.php");
-require_once("../Classes/Database/Modele.class.php");
-
 class Civilite extends Modele{
 	
 	/**

@@ -2,7 +2,8 @@
 /**
 * @name civiliteController.php : Contrôle les opérations de traitement sur les civilités
 **/
-require("../../Civilite/Modele/Civilite.class.php");
+require(dirname(__FILE__) . "/../../appLoader.class.php");
+$appLoader = new appLoader();
 
 /**
 * Instancier un nouvel objet ORM : charge le modèle
