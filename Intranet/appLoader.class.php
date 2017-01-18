@@ -16,10 +16,29 @@ class appLoader {
 	private static $dossierRacine;
 	
 	/**
+	 * Permet de connaître le mode de debugage xdebug
+	 * 	Vrai si la clé XDEBUG_SESSION_START existe dans le tableau $_GET
+	 * @var boolean
+	 */
+	private $debugModeEnabled = false;
+	
+	/**
 	 * Instancie un nouvel objet de chargement d'application
 	**/
 	public function __construct(){
+		if(array_key_exists("XDEBUG_SESSION_START", $_GET)){
+			$this->debugModeEnabled = true;
+		}
+		
 		spl_autoload_register(array(__CLASS__,"autoload"));
+	}
+	
+	/**
+	 * Retourne le mode d'exécution de l'application
+	 * @return boolean
+	 */
+	public function getDebugMode(){
+		return $this->debugModeEnabled;	
 	}
 	
 	/**
