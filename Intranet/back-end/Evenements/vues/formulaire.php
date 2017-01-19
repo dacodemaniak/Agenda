@@ -8,7 +8,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title><?php echo $title; ?></title>
+		<title><?php echo $vue->getTitle(); ?></title>
 		
 		<!-- Inclure bootstrap.min.css //-->
 		<link href="../../css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -34,7 +34,7 @@
 	<!-- classe bootstrap .container : contraint l'affichage à une largeur de 1190px //-->
 		<div class="container">
 			<header>
-				<h1>Gestion des événements : <?php echo $title; ?></h1>
+				<h1><?php echo $vue->title; ?></h1>
 			</header>
 			
 			<main>
@@ -124,7 +124,7 @@
 						</div>
 					</fieldset>
 					<div class="form-group">
-						<button type="submit" class="btn btn-primary"><?php echo $buttonLabel; ?></button>
+						<button type="submit" class="btn btn-primary"><?php echo $vue->buttonLabel; ?></button>
 						<input type="hidden" name="clePrimaire" value="<?php echo $evenements->evenements["clePrimaire"]; ?>" />
 					</div>
 				</form>

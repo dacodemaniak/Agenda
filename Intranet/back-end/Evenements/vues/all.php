@@ -8,7 +8,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title><?php echo $title; ?></title>
+		<title><?php echo $vue->getPageTitle(); ?></title>
 		
 		<!-- Inclure bootstrap.min.css //-->
 		<link href="../../css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -33,7 +33,7 @@
 	<body>
 		<div class="container">
 			<header>
-				<h1>Gestion des événements : Tous les événements</h1>
+				<h1><?php echo $vue->title; ?></h1>
 			</header>
 			
 			<main>

@@ -72,7 +72,7 @@ class views {
 	public function __set($attributeName, $value){
 		if(!property_exists($this, $attributeName)){
 			// L'attribut n'existant pas dans l'instance $this, on peut gérer, sinon... RISQUE
-			$this->{$attributName} = $value;
+			$this->{$attributeName} = $value;
 		}
 		
 		return $this;
