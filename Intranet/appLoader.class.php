@@ -30,6 +30,9 @@ class appLoader {
 			$this->debugModeEnabled = true;
 		}
 		
+		ini_set("display_errors", true);
+		error_reporting(E_ALL);
+		
 		spl_autoload_register(array(__CLASS__,"autoload"));
 	}
 	
@@ -46,7 +49,7 @@ class appLoader {
 	 * @param string $className
 	 */
 	public static function autoload($className){
-		self::$dossierRacine = $_SERVER["DOCUMENT_ROOT"] . "/Intranet/";
+		self::$dossierRacine = $_SERVER["DOCUMENT_ROOT"] . "/";
 		
 		//1. On cherche d'abord dans le dossier Classes de l'application
 		

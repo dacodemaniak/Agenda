@@ -77,26 +77,29 @@ if(sizeof($_POST)){
  * En fonction de l'état du tableau $_GET on choisit la vue à charger et les éventuels traitements à réaliser
  *	- $_GET vide => charger all.php après avoir exécuté la méthode "select()"
  **/
+$vue = new views();
+
 if(sizeof($_GET) == 0){
 	$evenements->select(); // La méthode select() pour lister tous les événements est appelée
-	$vue = "vues/all.php";
-	$title = "Tous les événements";
+	$vue->template("all.php");
+	$vue->title = "Tous les événements";
 } else {
 	// Contrôle si un id a été passé, si c'est le cas, on charge la ligne correspondante dans la base de données
 	if(isset($_GET["id"])){
 		// On doit charger la ligne concernée et afficher le formulaire de mise à jour
 		$evenements->selectById($_GET["id"]);
-		$vue = "vues/formulaire.php";
-		$title = "Mettre à jour " . $evenements->evenements["titre"];
-		$buttonLabel = "Mettre à jour";
+		
+		$vue->template("formulaire.php");
+		$vue->title = "Mettre à jour " . $evenements->evenements["titre"];
+		$vue->buttonLabel = "Mettre à jour";
 	}
 
 	if(isset($_GET["context"])){
 		if($_GET["context"] == "ajout"){
 			$evenements->emptyEvents(); // Crée un tableau avec les clés vides...
-			$vue = "vues/formulaire.php";
-			$title = "Ajouter un événement";
-			$buttonLabel = "Ajouter";
+			$vue->template("vues/formulaire.php");
+			$vue->title = "Ajouter un événement";
+			$vue->buttonLabel = "Ajouter";
 		}
 	}
 }
@@ -115,4 +118,4 @@ if(sizeof($_GET) == 0){
 /**
  * 4. Charger la vue correspondante à ce qui a été défini à l'étape 3
  **/
-include($vue);
+include($vue->template());
